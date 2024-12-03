@@ -22,7 +22,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <string.h>
-#include <stdio.h>
 #include "Radio.h"
 #include "menu.h"
 /* USER CODE END Includes */
