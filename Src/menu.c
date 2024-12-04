@@ -90,12 +90,12 @@ void SerialHome(UART_HandleTypeDef *huart,I2C_HandleTypeDef *hi2c,char *key)
 		}
 		break;
 	case 'm':
-		SetMute(hi2c);
+		SetMute(hi2c, Mute);
 		strcpy(message,"Mute!\r\n");
 		break;
 	case 'M':
-		ResetMute(hi2c);
-		strcpy(message,"unMute!\r\n");
+		SetMute(hi2c, UnMute);
+		strcpy(message,"UnMute!\r\n");
 		break;
 	case '?':
 		CommandManual(huart);
