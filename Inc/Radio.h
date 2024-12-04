@@ -13,7 +13,9 @@
 typedef enum{
 	VolDown,
 	VolUp,
-}VolumeChoices;
+	Mute,
+	UnMute,
+}Choices;
 
 typedef enum{
 	Success,
@@ -21,7 +23,7 @@ typedef enum{
 }Radio_bool;
 
 
-/* I2C Address*/
+/* I2C Address */
 #define RADIO_ADDR_PUSH (0x11 << 1)		//I2C_Mem_Write
 #define RADIO_ADDR_SEQ (0x10 << 1)		//I2C_Master_Transmit
 
@@ -134,11 +136,7 @@ Radio_bool SetVolume(I2C_HandleTypeDef *hi2c,uint8_t dir);
  * 音量を調整します。
  * 0x1~0xFまでの4段階です。無音にしたい場合はSetMuteを使用してください。
  */
-void SetMute(I2C_HandleTypeDef *hi2c);
-void ResetMute(I2C_HandleTypeDef *hi2c);
-/*
- * ミュートを解除します。
- */
+void SetMute(I2C_HandleTypeDef *hi2c,uint8_t muteselect);
 uint16_t GetRegister(I2C_HandleTypeDef *hi2c,uint8_t Reg);
 /*
  * Regレジスタの今の値を読み込んで返します。
