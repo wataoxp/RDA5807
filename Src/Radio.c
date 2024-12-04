@@ -123,14 +123,17 @@ Radio_bool SetVolume(I2C_HandleTypeDef *hi2c,uint8_t dir)
 	return Success;
 
 }
-void SetMute(I2C_HandleTypeDef *hi2c)
+void SetMute(I2C_HandleTypeDef *hi2c,uint8_t muteselect)
 {
-	RadioReg.Config = (RadioReg.Config & ~FLG_DMUTE);
-	SetRegister(hi2c, REG_CONFIG, RadioReg.Config);
-}
-void ResetMute(I2C_HandleTypeDef *hi2c)
-{
-	RadioReg.Config = (RadioReg.Config & ~FLG_DMUTE) | FLG_DMUTE;
+	if(muteselect == Mute)
+	{
+		RadioReg.Config = (RadioReg.Config & ~FLG_DMUTE);
+	}
+	else if(muteselect == UnMute)
+	{
+		RadioReg.Config = (RadioReg.Config & ~FLG_DMUTE) | FLG_DMUTE;
+	}
+
 	SetRegister(hi2c, REG_CONFIG, RadioReg.Config);
 }
 uint16_t GetRegister(I2C_HandleTypeDef *hi2c,uint8_t Reg)
